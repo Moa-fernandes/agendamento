@@ -23,8 +23,8 @@ Este é um projeto de agendamento de clientes com terapeutas, desenvolvido com o
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/Moa-fernandes/nome-do-repositorio.git
+   git clone https://github.com/Moa-fernandes/agendamento.git
 
-2.**Conecte ao seu banco**
+2.   **Conecte ao seu banco**
 
-3. **Divirta-se**
+3.   **Divirta-se**
