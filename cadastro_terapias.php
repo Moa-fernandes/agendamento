@@ -189,13 +189,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
+                // Verifica se o campo 'data_entrada' não está vazio antes de formatar
+                if (!empty($row['data_entrada'])) {
+                    // Supondo que o formato da data seja 'YYYY-MM-DD'
+                    $data = explode('-', $row['data_entrada']);
+                    if (count($data) == 3) {
+                        // Formata a data para 'dia/mês/ano'
+                        $data_formatada = $data[2] . '/' . $data[1] . '/' . $data[0];
+                    } else {
+                        $data_formatada = "Formato de data inválido";
+                    }
+                } else {
+                    $data_formatada = "Data não disponível";
+                }
+        
                 echo "<div class='grid-row'>
                         <div class='grid-item'>".$row['terapia_nome']."</div>
                         <div class='grid-item'>".$row['terapeuta_nome']."</div>
-                        <div class='grid-item'>".$row['data_entrada']."</div>
+                        <div class='grid-item'>".$data_formatada."</div>
                       </div>";
             }
-        } else {
+        }
+        
+            
+         else {
             echo "<div class='grid-row'>
                     <div class='grid-item' colspan='3'>Nenhuma terapia cadastrada</div>
                   </div>";

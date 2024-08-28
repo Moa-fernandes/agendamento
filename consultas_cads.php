@@ -8,7 +8,9 @@ $sql_consultas = "
     JOIN pacientes p ON c.paciente_id = p.id
     JOIN terapeutas t ON c.terapeuta_id = t.id
     JOIN terapias th ON c.terapia_id = th.id
-    WHERE c.status != 'Finalizado'";
+    WHERE c.status != 'Finalizado'
+    ORDER BY c.data_consulta ASC";
+
 $result_consultas = $conn->query($sql_consultas);
 
 // Buscar consultas finalizadas
@@ -104,7 +106,7 @@ $result_finalizadas = $conn->query($sql_finalizadas);
                                 <td><?php echo $consulta['paciente']; ?></td>
                                 <td><?php echo $consulta['terapeuta']; ?></td>
                                 <td><?php echo $consulta['terapia']; ?></td>
-                                <td><?php echo $consulta['data_consulta']; ?></td>
+                                <td><?php echo date('d/m/Y', strtotime($consulta['data_consulta'])); ?></td>
                                 <td><?php echo $consulta['horario_consulta']; ?></td>
                                 <td><?php echo $consulta['status']; ?></td>
                                 <td>
@@ -174,7 +176,7 @@ $result_finalizadas = $conn->query($sql_finalizadas);
                                 <td><?php echo $finalizada['paciente']; ?></td>
                                 <td><?php echo $finalizada['terapeuta']; ?></td>
                                 <td><?php echo $finalizada['terapia']; ?></td>
-                                <td><?php echo $finalizada['data_consulta']; ?></td>
+                                <td><?php echo date('d/m/Y', strtotime($finalizada['data_consulta'])); ?></td>
                                 <td><?php echo $finalizada['horario_consulta']; ?></td>
                                 <td><?php echo $finalizada['observacoes']; ?></td>
                             </tr>

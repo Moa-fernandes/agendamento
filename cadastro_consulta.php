@@ -82,7 +82,9 @@ $sql_consultas = "SELECT c.id, p.nome AS paciente, t.nome AS terapeuta, th.nome 
                   FROM consultas c
                   JOIN pacientes p ON c.paciente_id = p.id
                   JOIN terapeutas t ON c.terapeuta_id = t.id
-                  JOIN terapias th ON c.terapia_id = th.id";
+                  JOIN terapias th ON c.terapia_id = th.id
+                  ORDER BY c.data_consulta ASC";
+
 $result_consultas = $conn->query($sql_consultas);
 
 if (!$result_consultas) {
@@ -341,7 +343,7 @@ if (!$result_consultas) {
                                     <td><?php echo $consulta['paciente']; ?></td>
                                     <td><?php echo $consulta['terapeuta']; ?></td>
                                     <td><?php echo $consulta['terapia']; ?></td>
-                                    <td><?php echo $consulta['data_consulta']; ?></td>
+                                    <td><?php echo date('d/m/Y', strtotime($consulta['data_consulta'])); ?></td>
                                     <td><?php echo $consulta['horario_consulta']; ?></td>
                                     <td>
                                         <div class="status-container-moa">

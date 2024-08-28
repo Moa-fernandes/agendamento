@@ -11,7 +11,9 @@ $sql_consultas = "
     FROM consultas c
     JOIN pacientes p ON c.paciente_id = p.id
     JOIN terapeutas t ON c.terapeuta_id = t.id
-    WHERE c.status != 'Finalizado'";
+    WHERE c.status != 'Finalizado'
+    ORDER BY c.data_consulta ASC";
+
 $result_consultas = $conn->query($sql_consultas);
 ?>
 
